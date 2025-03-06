@@ -10,7 +10,7 @@ if not TOKEN:
     print("❌ Error: Bot token not found! Set ARCANE_BOT_TOKEN in Railway environment variables.")
     exit(1)
 
-# Game list with your hosted game link
+# Game list with your hosted game link and other WebGL games
 GAMES = [
     ("🕹 Cube 3D", "https://dwip-biswas.github.io/G1/"),
     ("🕹 Fluid Simulator", "https://paveldogreat.github.io/WebGL-Fluid-Simulation/"),
@@ -23,20 +23,18 @@ GAMES = [
 async def start(update: Update, context: CallbackContext):
     welcome_text = (
         "🕹️ *WELCOME TO ARCANE ARCADE* 🕹️\n"
-        "══════════════════\n\n\n"
+        "══════════════════\n\n"
         "🔥 *THE ULTIMATE GAMING BOT* 🔥\n\n"
         "🎮 Play mini-games right inside Telegram!\n\n"
         "💀 Challenge your friends & beat high scores!\n\n"
         "⚡ Pick a game & start playing NOW!\n"
-        "══════════════════\n\n\n"
+        "══════════════════\n\n"
         "🔻 *AVAILABLE GAMES:* 🔻"
     )
 
-    # Create arcade-style game buttons
-    keyboard = [
-        [InlineKeyboardButton(GAMES[0][0], url=GAMES[0][1])]
-    ]
-
+    # Create buttons for all games
+    keyboard = [[InlineKeyboardButton(game[0], url=game[1])] for game in GAMES]
+    
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(welcome_text, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
