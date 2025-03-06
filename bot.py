@@ -24,12 +24,12 @@ GAMES = [
 async def start(update: Update, context: CallbackContext):
     welcome_text = (
         "🕹️👽 *WELCOME TO ARCANE ARCADE* 👽🕹️\n"
-        "════════════════════════\n"
-        "🔥 *THE ULTIMATE GAMING BOT* 🔥\n"
-        "🎮 Play mini-games right inside Telegram!\n"
-        "💀 Challenge your friends & beat high scores!\n"
+        "══════════════════\n\n\n"
+        "🔥 *THE ULTIMATE GAMING BOT* 🔥\n\n"
+        "🎮 Play mini-games right inside Telegram!\n\n"
+        "💀 Challenge your friends & beat high scores!\n\n"
         "⚡ Pick a game & start playing NOW!\n"
-        "════════════════════════\n\n"
+        "══════════════════\n\n\n"
         "🔻 *AVAILABLE GAMES:* 🔻"
     )
 
