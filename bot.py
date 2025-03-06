@@ -1,9 +1,14 @@
 import os
-from telegram import Bot, Update, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
-from telegram.ext import Updater, CommandHandler, CallbackContext
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler, CallbackContext
+from telegram.constants import ParseMode
 
 # Get the bot token from Railway environment variables
 TOKEN = os.getenv("ARCANE_BOT_TOKEN")
+
+if not TOKEN:
+    print("❌ Error: Bot token not found! Set ARCANE_BOT_TOKEN in Railway environment variables.")
+    exit(1)
 
 # Game list (You can add more games here)
 GAMES = [
@@ -16,7 +21,7 @@ GAMES = [
 ]
 
 # Arcade-style welcome message
-def start(update: Update, context: CallbackContext):
+async def start(update: Update, context: CallbackContext):
     welcome_text = (
         "🕹️👽 *WELCOME TO ARCANE ARCADE* 👽🕹️\n"
         "════════════════════════\n"
@@ -40,17 +45,16 @@ def start(update: Update, context: CallbackContext):
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text(welcome_text, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
+    await update.message.reply_text(welcome_text, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
 
 # Main function to run the bot
 def main():
-    updater = Updater(TOKEN, use_context=True)
-    dp = updater.dispatcher
+    app = Application.builder().token(TOKEN).build()
 
-    dp.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("start", start))
 
-    updater.start_polling()
-    updater.idle()
+    print("✅ Arcane Arcade Bot is running!")
+    app.run_polling()
 
 if __name__ == "__main__":
     main()
