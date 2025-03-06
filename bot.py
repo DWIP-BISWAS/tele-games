@@ -13,6 +13,10 @@ if not TOKEN:
 # Game list with your hosted game link
 GAMES = [
     ("🕹 Cube 3D", "https://dwip-biswas.github.io/G1/"),
+    ("🕹 Fluid Simulator", "https://paveldogreat.github.io/WebGL-Fluid-Simulation/"),
+    ("🕹 Mount Blanc Explorer", "https://therace.montblancexplorer.com"),
+    ("🕹 Egg Hunt", "https://egghunt.merci-michel.com"),
+    ("🕹 Interland", "https://beinternetawesome.withgoogle.com/en_us/interland/kind-kingdom"),
 ]
 
 # Arcade-style welcome message
@@ -30,7 +34,7 @@ async def start(update: Update, context: CallbackContext):
 
     # Create arcade-style game buttons
     keyboard = [
-        [InlineKeyboardButton(GAMES[0][0], url=GAMES[0][1])]
+        [InlineKeyboardButton(GAMES[0][0], url=GAMES[0][2])]
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
