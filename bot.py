@@ -10,9 +10,9 @@ if not TOKEN:
     print("❌ Error: Bot token not found! Set ARCANE_BOT_TOKEN in Railway environment variables.")
     exit(1)
 
-# Game list (You can add more games here)
+# Game list with your hosted game link
 GAMES = [
-    ("🕹 Cube 3D", "cube3d"),
+    ("🕹 Cube 3D", "https://dwip-biswas.github.io/G1/"),
 ]
 
 # Arcade-style welcome message
@@ -28,15 +28,10 @@ async def start(update: Update, context: CallbackContext):
         "🔻 *AVAILABLE GAMES:* 🔻"
     )
 
-    # Create arcade-style game buttons in a 2x2 layout
-    keyboard = []
-    for i in range(0, len(GAMES), 2):
-        row = [
-            InlineKeyboardButton(GAMES[i][0], url=f"https://t.me/{context.bot.username}?game={GAMES[i][1]}")
-        ]
-        if i + 1 < len(GAMES):
-            row.append(InlineKeyboardButton(GAMES[i + 1][0], url=f"https://t.me/{context.bot.username}?game={GAMES[i + 1][1]}"))
-        keyboard.append(row)
+    # Create arcade-style game buttons
+    keyboard = [
+        [InlineKeyboardButton(GAMES[0][0], url=GAMES[0][1])]
+    ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
