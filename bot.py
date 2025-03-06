@@ -34,7 +34,7 @@ async def start(update: Update, context: CallbackContext):
 
     # Create arcade-style game buttons
     keyboard = [
-        [InlineKeyboardButton(GAMES[0][0], url=GAMES[0][2])]
+        [InlineKeyboardButton(GAMES[0][0], url=GAMES[0][1])]
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
