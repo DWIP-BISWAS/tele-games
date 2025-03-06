@@ -13,17 +13,12 @@ if not TOKEN:
 # Game list (You can add more games here)
 GAMES = [
     ("🕹 Cube 3D", "cube3d"),
-    ("⚽ Ultimate Football", "football"),
-    ("🚀 Space Blaster", "spaceshooter"),
-    ("🧩 Brain Puzzle", "puzzle"),
-    ("🏎️ Neon Racer", "racing"),
-    ("🎵 Beat Battle", "musicbattle"),
 ]
 
 # Arcade-style welcome message
 async def start(update: Update, context: CallbackContext):
     welcome_text = (
-        "🕹️👽 *WELCOME TO ARCANE ARCADE* 👽🕹️\n"
+        "🕹️ *WELCOME TO ARCANE ARCADE* 🕹️\n"
         "══════════════════\n\n\n"
         "🔥 *THE ULTIMATE GAMING BOT* 🔥\n\n"
         "🎮 Play mini-games right inside Telegram!\n\n"
